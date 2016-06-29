@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="newsandnotice" namespace="/"
+		extends="struts-default,json-default">
+
+		<!-- Action -->
+		<!-- NewsAndNoticeAction -->
+		<action name="newsAndNoticeAction" class="NewsAndNoticeAction">
+			<!-- 用户 -->
+			<result name="searchNewsForPage">
+				/frontend-news_list.jsp 
+		</result>
+			<result name="searchNoticeForPage">
+				/frontend-notice_list.jsp 
+		</result>
+			<result name="showOneNewsAndNotice">
+				/frontend-newsandnotice_details.jsp
+    	</result>
+    	<result name="showAcademyIntroduction">
+				/frontend-academyintroduction.jsp
+    	</result>
+		</action>
+
+		<action name="newsAndNoticeActionForMgr" class="NewsAndNoticeActionForMgr">
+			<!-- 管理员 -->
+			<result name="saveNewsAndNotice" type="redirect">
+				/newsAndNoticeActionForMgr!queryForPage?page=1&amp;categoryId=${category.categoryId}
+    	</result>
+			<result name="deleteNewsAndNotice" type="redirect">
+				/newsAndNoticeActionForMgr!queryForPage?page=1&amp;categoryId=${categoryId}
+    	</result>
+			<result name="updateNewsAndNotice" type="redirect">
+				/newsAndNoticeActionForMgr!queryForPage?page=1&amp;categoryId=${categoryId}
+		</result>
+			<result name="listNewsForPage">
+				/admin-managenews.jsp
+		</result>
+			<result name="listNoticeForPage">
+				/admin-managenotice.jsp 
+		</result>
+		<result name="beforeAddInfo">/admin-saveormodi_newsandnotice.jsp</result>
+		<result name="queryForPage">
+				/admin-managenews.jsp</result>
+			<result type="json"></result>
+		</action>
+
+
+		<action name="loadCategory" class="LoadCategory">
+			<result type="json" />
+		</action>
+		<action name="loadSource" class="LoadSource">
+			<result type="json" />
+		</action>
+	</package>
+</struts>

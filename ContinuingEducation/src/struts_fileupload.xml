@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="fileupload" namespace="/"
+		extends="struts-default,json-default">
+		<!-- Action -->
+		<action name="fileUploadAction" class="FileUploadAction">
+			<result name="queryFileForPage">/admin-managefile.jsp</result>
+			<result name="addFile" type="redirect">/fileUploadAction!queryFileForPage
+			</result>
+			<result name="deleteFile" type="redirect">/fileUploadAction!queryFileForPage
+			</result>
+			<result type="json"></result>
+		</action>
+
+		<action name="fileDownloadAction" class="FileDownloadAction">
+			<result name="download" type="stream">
+				<param name="contentType">application/octet-stream;charset=UTF-8</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result type="json"></result>
+		</action>
+
+		<action name="fileUploadActionForMgr" class="FileUploadActionForMgr">
+			<result name="queryFileForPage">/frontend-resourcecenter.jsp</result>
+		</action>
+
+		<action name="fileDownloadActionForMgr" class="FileDownloadActionForMgr">
+			<result name="download" type="stream">
+				<param name="contentType">application/octet-stream;charset=UTF-8</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result type="json"></result>
+		</action>
+
+		<action name="loadFileCategory" class="LoadFileCategory">
+			<result type="json"></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.project.model">
+
+	<class name="Project" table="EDU_PROJECT">
+		<id name="projectID" column="projectID">
+			<generator class="uuid" />
+		</id>
+		<property name="projectOrder" column="projectOrder"></property>
+		<!--
+			项目编号：宁夏理工[20151030]
+		-->
+
+		<many-to-one name="projectCategory"
+			class="edu.neu.nxist.continuingedu.project.model.ProjectCategory"
+			lazy="false">
+			<column name="pjCategoryId" />
+		</many-to-one>
+		<many-to-one name="projectStatus"
+			class="edu.neu.nxist.continuingedu.project.model.ProjectStatus" lazy="false">
+			<column name="pjStatusId" />
+		</many-to-one>
+		<many-to-one name="projectScope"
+			class="edu.neu.nxist.continuingedu.project.model.ProjectScope" lazy="false">
+			<column name="pjScopeId" />
+		</many-to-one>
+		<many-to-one name="projectSponsor"
+			class="edu.neu.nxist.continuingedu.project.model.ProjectSponsor"
+			lazy="false">
+			<column name="pjSponsorId" />
+		</many-to-one>
+
+		<property name="projectName" column="projectName"></property>
+		<property name="site" column="site"></property>
+		<property name="beginTime" column="beginTime"></property>
+		<property name="endTime" column="endTime"></property>
+		<property name="createTime" column="createTime"></property>
+		<property name="introduction" column="introduction"></property>
+		<property name="contact" column="contact"></property>
+		<property name="cost" column="cost" type="java.lang.Float"></property>
+		<property name="volume" column="volume" type="java.lang.Integer"></property>
+		<property name="visible" column="visible"></property>
+		
+		<set name="pjRegister" lazy="false">
+			<key column="projectID"></key>
+			<one-to-many
+				class="edu.neu.nxist.continuingedu.signup.model.ProjectRegister" />
+		</set>
+	</class>
+
+	<class name="ProjectCategory" table="EDU_PJCATEGORY">
+		<id name="pjCategoryId" column="pjCategoryId" type="java.lang.Integer">
+		</id>
+		<property name="pjCategoryName" column="pjCategoryName"></property>
+	</class>
+	<class name="ProjectStatus" table="EDU_PJSTATUS">
+		<id name="pjStatusId" column="pjStatusId" type="java.lang.Integer">
+		</id>
+		<property name="pjStatusName" column="pjStatusName"></property>
+	</class>
+	<class name="ProjectScope" table="EDU_PJSCOPE">
+		<id name="pjScopeId" column="pjScopeId" type="java.lang.Integer">
+		</id>
+		<property name="pjScopeName" column="pjScopeName"></property>
+	</class>
+	<class name="ProjectSponsor" table="EDU_PJSPONSOR">
+		<id name="pjSponsorId" column="pjSponsorId" type="java.lang.Integer">
+		</id>
+		<property name="pjSponsorName" column="pjSponsorName"></property>
+	</class>
+
+</hibernate-mapping>

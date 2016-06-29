@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.register.model">
+
+	<class name="UserInfo" table="EDU_USERINFO">
+		<id name="userId" column="userID">
+		<generator class="uuid" />
+		</id>
+		
+		<property name="userName" column="username"></property>
+		<property name="userPassword" column="password"></property>
+		<property name="realName" column="realname"></property>
+		<property name="sex" column="sex"></property>
+		<property name="birth" column="birth"></property>
+		<property name="age" column="age"></property>
+		<property name="role" column="role"></property>
+	
+		<many-to-one name="nation"
+			class="edu.neu.nxist.continuingedu.register.model.Nation" lazy="false">
+			<column name="nationID" />
+		</many-to-one>
+		<many-to-one name="party"
+			class="edu.neu.nxist.continuingedu.register.model.Party" lazy="false">
+			<column name="partyID" />
+		</many-to-one>
+	
+		<many-to-one name="certificate"
+			class="edu.neu.nxist.continuingedu.register.model.Certificate" lazy="false">
+			<column name="certificateKind" />
+		</many-to-one>
+		<many-to-one name="degree"
+			class="edu.neu.nxist.continuingedu.register.model.Degree" lazy="false">
+			<column name="degreeID" />
+		</many-to-one>
+		<many-to-one name="school"
+			class="edu.neu.nxist.continuingedu.register.model.School" lazy="false">
+			<column name="schoolID" />
+		</many-to-one>
+
+		<property name="certificateID" column="certificateID"></property>
+		<property name="graduateTime" column="graduateTime"></property>
+
+		<property name="Address" column="Address"></property>
+		<property name="mobile" column="mobile"></property>
+		<property name="postCode" column="postCode"></property>
+		<property name="Email" column="Email"></property>
+		<property name="remarks" column="remarks"></property>
+		<property name="hide" column="hide"></property>
+		<property name="deadline" column="deadline"></property>
+		<property name="hidetime" column="hidetime"></property>
+
+	</class>
+
+	<class name="Certificate" table="EDU_CERTIFICATE">
+		<id name="certificateKind" column="certificateKind">
+		</id>
+
+		<property name="certificateName" column="certificateName"></property>
+	</class>
+
+	<class name="Degree" table="EDU_DEGREE">
+		<id name="degreeID" column="degreeID">
+		</id>
+
+		<property name="degreeName" column="degreeName"></property>
+	</class>
+
+
+	<class name="Nation" table="EDU_NATION">
+		<id name="nationID" column="nationID">
+		</id>
+
+		<property name="nationName" column="nationName"></property>
+	</class>
+
+	<class name="Party" table="EDU_PARTY">
+		<id name="partyID" column="partyID">
+		</id>
+
+		<property name="partyName" column="partyName"></property>
+	</class>
+
+	<class name="School" table="EDU_SCHOOL">
+		<id name="schoolID" column="schoolID">
+		</id>
+
+		<property name="schoolName" column="schoolName"></property>
+		<property name="schoolHistory" column="schoolHistory"></property>
+	</class>
+
+</hibernate-mapping>

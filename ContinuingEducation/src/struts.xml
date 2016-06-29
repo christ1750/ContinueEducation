@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="structs.devMode" value="true" />
+    <constant name="struts.objectFactory" value="spring"/>
+	<!-- 登陆注册管理struts.xml -->
+	<include file="struts_register.xml" />
+	<!-- 项目管理struts.xml -->
+	<include file="struts_project.xml" />
+	<!-- 报名系统struts.xml -->
+	<include file="struts_signup.xml" />
+	<!-- 新闻和通知公告管理struts.xml -->
+	<include file="struts_newsandnotice.xml" />
+	<!-- 文件管理struts.xml -->
+	<include file="struts_fileupload.xml" />
+	<!-- 邮件服务struts.xml -->
+	<include file="struts_emailverify.xml" />
+	<!-- 课件管理struts.xml -->
+	<include file="struts_courseware.xml" />
+	<!-- 留言管理struts.xml -->
+	<include file="struts_guestbook.xml" />
+	<!-- 教务管理struts.xml -->
+	<include file="struts_eduadmin.xml" />
+	<!-- 焦点图管理struts.xml -->
+	<include file="struts_diagram.xml" />
+	
+	
+	
+</struts>

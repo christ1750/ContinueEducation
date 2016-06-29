@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<package name="courseware" namespace="/"
+		extends="struts-default,json-default">
+
+		<!-- Action -->
+		<!-- CoursewareAction -->
+		<action name="coursewareAction" class="CoursewareAction">
+		           <!-- 用户 -->
+		<result name="listjxjyForPage">
+				/frontend-course_jxjydetail.jsp
+		</result>
+		<result name="beforeUpload">/admin-addcourseware.jsp</result>
+		
+		<result name="listhsjyForPage">
+				/frontend-course_hsjydetail.jsp
+		</result>
+		
+		
+		<result name="listaqscpxForPage">
+				/frontend-course_aqscpxdetail.jsp
+		</result>
+		
+		
+		<result name="listzyjnpxForPage">
+				/frontend-course_zyjnpxdetail.jsp
+		</result>
+		
+ 			
+
+			<!-- 管理员 -->
+			<result name="saveCourseware" type="redirect">
+				/admin-addcourseware.jsp
+    	</result>
+
+			<result name="showOneCourseware1">
+				/admin-updatecourseware.jsp
+    	</result>
+
+			<result name="deleteCourseware0" type="redirect">
+				/coursewareAction!listjxjyForPage1
+    	</result>
+			<result name="deleteCourseware1" type="redirect">
+				/coursewareAction!listhsjyForPage1
+    	</result>
+    	    <result name="deleteCourseware2" type="redirect">
+				/coursewareAction!listaqscpxForPage1
+    	</result>
+    	    <result name="deleteCourseware3" type="redirect">
+				/coursewareAction!listzyjnpxForPage1
+    	</result>
+    	
+    	
+    	    <result name="updateCourseware0" type="redirect">
+			/coursewareAction!listjxjyForPage1
+		</result>
+		<result name="updateCourseware1" type="redirect">
+			/coursewareAction!listhsjyForPage1
+		</result>
+		<result name="updateCourseware2" type="redirect">
+			/coursewareAction!listaqscpxForPage1
+		</result>
+		<result name="updateCourseware3" type="redirect">
+			/coursewareAction!listzyjnpxForPage1
+		</result>
+		
+		<result name="downloadCourseware" type="stream">
+			<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+			<param name="inputName">downloadFile</param>
+		</result>
+		
+		
+		<result name="listjxjyForPage1">
+				/admin-listjxjycourseware.jsp
+		</result>
+		
+		
+		<result name="listhsjyForPage1">
+				/admin-listhsjycourseware.jsp
+		</result>
+		
+		
+		<result name="listaqscpxForPage1">
+				/admin-listaqscpxcourseware.jsp
+		</result>
+		
+		
+		<result name="listzyjnpxForPage1">
+				/admin-listzyjnpxcourseware.jsp
+		</result>
+
+			<result type="json"></result>
+		</action>
+
+	</package>
+</struts>

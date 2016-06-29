@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.signup.model">
+
+	<class name="ProjectRegister" table="EDU_PJREGISTER">
+		<id name="applyId" column="applyID">
+			<generator class="uuid" />
+		</id>
+
+		<property name="reportNum" column="reportNum"></property>
+		<property name="remarks" column="remarks"></property>
+		<property name="signupTime" column="signupTime"></property>
+		<property name="reason" column="reason"></property>
+		<!-- <property name="confirm" column="confirm"></property> -->
+		<property name="grade" column="grade"></property>
+		<property name="issue" column="issue"></property>
+		
+		
+		<many-to-one name="project"
+			class="edu.neu.nxist.continuingedu.project.model.Project" lazy="false">
+			<column name="projectID" />
+		</many-to-one>
+		<many-to-one name="userInfo"
+			class="edu.neu.nxist.continuingedu.register.model.UserInfo" lazy="false">
+			<column name="userID" />
+		</many-to-one>
+		<many-to-one name="reportStatus"
+			class="edu.neu.nxist.continuingedu.signup.model.ReportStatus" lazy="false">
+			<column name="reportID" />
+		</many-to-one>
+		<many-to-one name="checkStatus"
+			class="edu.neu.nxist.continuingedu.signup.model.CheckStatus" lazy="false">
+			<column name="checkID" />
+		</many-to-one>
+	</class>
+
+	<class name="ReportStatus" table="EDU_REPORTSTATUS">
+		<id name="reportId" column="reportId" type="java.lang.Integer">
+		</id>
+		<property name="reportName" column="reportName"></property>
+	</class>
+
+	<class name="CheckStatus" table="EDU_CHECKSTATUS">
+		<id name="checkId" column="checkId" type="java.lang.Integer">
+		</id>
+		<property name="checkName" column="checkName"></property>
+	</class>
+</hibernate-mapping>

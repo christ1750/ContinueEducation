@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.emailverify.model">
+
+	<class name="MailInfo" table="EDU_MAILINFO">
+		<id name="id" column="id">
+			<generator class="uuid" />
+		</id>
+		<property name="host" column="host"></property>
+		<property name="fromm" column="fromm"></property>
+		<property name="too" column="too"></property>
+		<property name="cc" column="cc"></property>
+		<property name="username" column="username"></property>
+		<property name="password" column="password"></property>
+		<property name="title" column="title"></property>
+		<property name="content" column="content"></property>
+	</class>
+
+</hibernate-mapping>

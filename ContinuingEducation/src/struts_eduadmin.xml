@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="courseteacher" namespace="/"
+		extends="struts-default,json-default">
+
+		<!-- Action -->
+		<!-- CoursewareAction -->
+		<action name="courseteacherAction" class="CourseteacherAction">
+		
+		
+ 			
+
+			<!-- 管理员 -->
+			<result name="listselectedForPage"  >
+				/admin-listselectedtea.jsp
+    	</result>
+ 
+			<result name="listteacherForPage" >
+				/admin-selectteacher.jsp
+    	</result>
+
+			<result name="deletecourseteacher1" type="redirect">
+				/courseteacherAction!listselectedForPage?page=1
+    	</result>
+    	
+    	<result name="deletecourseteacher2" type="redirect">
+				/courseteacherAction!listcourseteacherForPage?page=1
+    	</result>
+			
+			
+    	
+    	
+    	    <result name="addCourseteacher" type="redirect">
+			/courseteacherAction!listselectedForPage?page=1
+		</result>
+	
+		<result name="listcourseteacherForPage" >
+				/admin-listcourseteacher.jsp
+    	</result>
+		
+		<result name="listteachproject" >
+				/admin-listteachproject.jsp
+    	</result>
+    	
+    	<result name="listgrade" >
+				/admin-listgrade.jsp
+    	</result>
+    	
+    	<result name="showOneProRe" >
+				/admin-updategrade.jsp
+    	</result>
+    	<result name="updateGrade" type="redirect">
+				/courseteacherAction!listgrade
+    	</result>
+    	
+    	<!-- 学员 -->
+    	<result name="searchgrade" >
+				/frontend-searchgrade.jsp
+    	</result>
+    	
+		</action>
+	</package>
+</struts>

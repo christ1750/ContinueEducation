@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="diagram" namespace="/"
+		extends="struts-default,json-default">
+
+		<!-- Action -->
+		<!-- CoursewareAction -->
+		<action name="diagramAction" class="DiagramAction">
+		
+		
+ 			<result name="editdiagram" >
+				/admin-showonediagram.jsp
+    	</result>
+	<result name="updateDiagram" type="redirect">
+				/newsAndNoticeActionForMgr!queryForPage
+    	</result>
+    	
+    	<result name="linknews" type="redirect">
+				/newsAndNoticeAction!showOneNewsAndNotice?searchNewsAndNoticeID=${linknewsID}
+    	</result>
+    	<result type="json"></result>
+		<!--	
+    	<result name="updateGrade" type="redirect">
+				/courseteacherAction!listgrade
+    	</result>
+    	
+    	
+    	<result name="searchgrade" >
+				/frontend-searchgrade.jsp
+    	</result>
+    	  -->
+		</action>
+	</package>
+</struts>

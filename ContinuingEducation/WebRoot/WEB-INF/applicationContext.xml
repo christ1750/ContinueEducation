@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+         http://www.springframework.org/schema/tx 
+     	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- 定义数据源的信息 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="jdbcUrl"
+			value="jdbc:sqlserver://192.168.168.181:1433;databasename =TEST" />
+		<!--
+			value="jdbc:sqlserver://localhost:1433;databasename
+			=nxistContinuing"/>
+		-->
+		<!--
+			value="jdbc:sqlserver://192.168.168.181:1433;databasename = TEST" />
+		-->
+		<!--  -->
+		<property name="user" value="sa" />
+		<property name="password" value="sa" />
+		<property name="minPoolSize" value="10" />
+		<property name="maxPoolSize" value="20" />
+		<property name="initialPoolSize" value="10" />
+	</bean>
+
+
+	<!--定义Hibernate的SessionFactory -->
+	<!-- SessionFactory使用的数据源为上面的数据源 -->
+	<!-- 指定了Hibernate的映射文件和配置信息 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+
+			<list>
+				<value>edu/neu/nxist/continuingedu/register/model/registerModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/project/model/projectModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/signup/model/signupModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/newsandnotice/model/newsandnoticeModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/emailverify/model/mailModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/fileupload/model/fileInfoModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/courseware/model/coursewareModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/guestbook/model/Guestbook.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/courseteacher/model/courseteacherModel.hbm.xml
+				</value>
+				<value>edu/neu/nxist/continuingedu/diagram/model/diagramModel.hbm.xml
+				</value>
+			</list>
+
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+				hibernate.hbm2ddl.auto=update
+				hibernate.show_sql=true	      
+			</value>
+		</property>
+	</bean>
+
+	<!-- 配置报名系统-->
+	<import resource="applicationContext_register.xml" />
+	<import resource="applicationContext_project.xml" />
+	<import resource="applicationContext_signup.xml" />
+	<import resource="applicationContext_newsandnotice.xml" />
+	<import resource="applicationContext_emailverify.xml" />
+	<import resource="applicationContext_fileupload.xml" />
+	<import resource="applicationContext_courseware.xml" />
+	<import resource="applicationContext_guestbook.xml" />
+    <import resource="applicationContext_eduadmin.xml" />
+     <import resource="applicationContext_diagram.xml" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

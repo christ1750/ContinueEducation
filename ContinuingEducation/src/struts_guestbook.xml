@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="guestbook" namespace="/"
+		extends="struts-default,json-default">
+
+		<!-- Action -->
+		
+		<action name="guestbookAction" class="GuestbookAction">
+			<!-- 用户 -->
+			<result name="addguestbook" type="redirect">
+				/guestbookAction!listForPage
+				</result>
+			<result name="showguestbook" >/frontend-guestbook.jsp</result>
+			<result name="listForPage" >/frontend-guestbook.jsp</result>
+			
+
+			<!-- 管理员 -->
+			<result name="addguestbookadmin" type="redirect">
+				/guestbookAction!showForPage
+				</result>
+			<result name="addguestbooktea" type="redirect">
+				/guestbookAction!showForPage
+				</result>
+			<result name="deleteguestbookshow" type="redirect">
+				/guestbookAction!showForPage
+    	</result>
+			<result name="deleteguestbookcheck" type="redirect">
+				/guestbookAction!checkForPage
+    	</result>
+    	<result name="pass" type="redirect">
+				/guestbookAction!checkForPage
+    	</result>
+    	<result name="forbid" type="redirect">
+				/guestbookAction!showForPage
+    	</result>
+    	<result name="checkForPage">
+    	/admin-checkguestbook.jsp
+    	</result>
+    	<result name="showForPage">
+    	/admin-showguestbook.jsp
+    	</result>
+			<result type="json"></result>
+		</action>
+
+	</package>
+</struts>

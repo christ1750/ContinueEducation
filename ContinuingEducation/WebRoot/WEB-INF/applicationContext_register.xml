@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+         http://www.springframework.org/schema/tx 
+     	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!--基类-->
+	<bean id="BasicDAO" class="edu.neu.nxist.continuingedu.basic.BasicDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- DAO -->
+
+	<bean id="CertificateDAO"
+		class="edu.neu.nxist.continuingedu.register.dao.CertificateDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+
+	<bean id="DegreeDAO" class="edu.neu.nxist.continuingedu.register.dao.DegreeDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+
+	<bean id="NationDAO" class="edu.neu.nxist.continuingedu.register.dao.NationDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+
+	<bean id="PartyDAO" class="edu.neu.nxist.continuingedu.register.dao.PartyDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+
+	<bean id="SchoolDAO" class="edu.neu.nxist.continuingedu.register.dao.SchoolDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+	
+	<bean id="UserInfoDAO" class="edu.neu.nxist.continuingedu.register.dao.UserInfoDAOImpl">
+		<property name="myBasicDao" ref="BasicDAO" />
+	</bean>
+	
+	
+	<!-- service -->
+	<bean id="CertificateService"
+		class="edu.neu.nxist.continuingedu.register.service.CertificateServiceImpl">
+		<property name="certificateDao" ref="CertificateDAO" />
+	</bean>
+
+	<bean id="DegreeService"
+		class="edu.neu.nxist.continuingedu.register.service.DegreeServiceImpl">
+		<property name="degreeDao" ref="DegreeDAO" />
+	</bean>
+
+	<bean id="NationService"
+		class="edu.neu.nxist.continuingedu.register.service.NationServiceImpl">
+		<property name="nationDao" ref="NationDAO" />
+	</bean>
+
+	<bean id="PartyService"
+		class="edu.neu.nxist.continuingedu.register.service.PartyServiceImpl">
+		<property name="partyDao" ref="PartyDAO" />
+	</bean>
+
+	<bean id="SchoolService"
+		class="edu.neu.nxist.continuingedu.register.service.SchoolServiceImpl">
+		<property name="schoolDao" ref="SchoolDAO" />
+	</bean>
+
+	
+	<bean id="UserInfoService"
+		class="edu.neu.nxist.continuingedu.register.service.UserInfoServiceImpl">
+		<property name="userInfoDao" ref="UserInfoDAO" />
+	</bean>
+	
+
+	<!-- action -->
+	<bean id="loadCertificateAction" class="edu.neu.nxist.continuingedu.register.ajax.LoadCertificate">
+		<property name="certificateService" ref="CertificateService" />
+	</bean>
+
+	<bean id="loadDegreeAction" class="edu.neu.nxist.continuingedu.register.ajax.LoadDegree">
+		<property name="degreeService" ref="DegreeService" />
+	</bean>
+
+	<bean id="loadNationAction" class="edu.neu.nxist.continuingedu.register.ajax.LoadNation">
+		<property name="nationService" ref="NationService" />
+	</bean>
+
+	<bean id="loadPartyAction" class="edu.neu.nxist.continuingedu.register.ajax.LoadParty">
+		<property name="partyService" ref="PartyService" />
+	</bean>
+
+	<bean id="loadSchoolAction" class="edu.neu.nxist.continuingedu.register.ajax.LoadSchool">
+		<property name="schoolService" ref="SchoolService" />
+	</bean>
+
+	<bean id="userInfoAction" class="edu.neu.nxist.continuingedu.register.action.UserInfoAction">
+		<property name="userInfoService" ref="UserInfoService" />
+	</bean>
+	
+
+	<bean id="loginAction" class="edu.neu.nxist.continuingedu.register.action.LoginAction">
+		<property name="userInfoService" ref="UserInfoService" />
+	</bean>
+	
+	<bean id="userManageAction" class="edu.neu.nxist.continuingedu.register.action.UserManageAction">
+		<property name="userInfoService" ref="UserInfoService" />
+	</bean>
+
+</beans>

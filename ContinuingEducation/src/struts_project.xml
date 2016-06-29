@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package extends="struts-default,json-default" namespace="/"
+		name="project">
+
+		<action name="loadProject" class="loadProjectAction">
+			<result type="json" />
+		</action>
+		<action name="loadPjCategory" class="loadPjCategory">
+			<result type="json" />
+		</action>
+		<action name="loadPjName" class="loadPjName">
+			<result type="json" />
+		</action>
+		<action name="loadPjScope" class="loadPjScope">
+			<result type="json" />
+		</action>
+		<action name="loadPjSponsor" class="loadPjSponsor">
+			<result type="json" />
+		</action>
+		<action name="loadPjStatus" class="loadPjStatus">
+			<result type="json" />
+		</action>
+
+		<!-- Action -->
+		<!-- Project.Action -->
+		<action name="myProjectAction" class="projectAction">
+			<result name="displayProject">
+				/frontend-pj_list.jsp
+    	</result>
+			<result name="searchProjectForPage">
+				/frontend-pj_list.jsp
+    	</result>
+			<result name="showOneProject">
+				/frontend-pj_details.jsp
+    	</result>
+
+		</action>
+		<!-- ProjectActionForMgr.Action -->
+		<action name="myProjectActionForMgr" class="projectActionForMgr">
+			<result name="addProject" type="redirect">
+				<!--
+					添加了 type="redirect"后，浏览器就会重新请求 ,否则会报错（resource）
+				-->
+				/myProjectActionForMgr!queryProjectForPage?page=1
+			</result>
+			<result name="updateProject" type="redirect">
+				/myProjectActionForMgr!queryProjectForPage?page=${pageBean.currentPage}
+			</result>
+			<result name="deleteProject" type="redirect">
+				/myProjectActionForMgr!queryProjectForPage?page=1
+    	</result>
+			<result name="listProjectForPage">
+				/admin-lqgl.jsp
+    	</result>
+			<result name="queryProjectForPage">
+				/admin-manageproject.jsp
+    	</result>
+    	<result name="beforeAddPj">/admin-saveormodi_project.jsp</result>
+		<result name="beforeConfirm">/admin-lqgl_user.jsp</result>	
+		</action>
+
+	</package>
+</struts>

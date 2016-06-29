@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.courseware.model">
+
+	<class name="Courseware" table="EDU_COURSEWARE">
+		<id name="id">
+			<column name="ID" />
+			<generator class="uuid" />
+		</id>
+		<property name="title">
+			<column name="title" />
+		</property>
+		<property name="path">
+			<column name="path" />
+		</property>
+		<property name="time">
+			<column name="time" />
+		</property>
+		<property name="category">
+			<column name="category" />
+		</property>
+		<property name="author">
+			<column name="author" />
+		</property>
+		<property name="authortype">
+			<column name="authortype" />
+		</property>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+         http://www.springframework.org/schema/tx 
+     	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!--基类-->
+	<bean id="BasicDAO" class="edu.neu.nxist.continuingedu.basic.BasicDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- DAO -->
+	<bean id="ProjectRegisterDAO"
+		class="edu.neu.nxist.continuingedu.signup.dao.ProjectRegisterDAOImpl">
+		<property name="basicDao" ref="BasicDAO" />
+	</bean>
+
+	<!-- service -->
+	<bean id="ProjectRegisterService"
+		class="edu.neu.nxist.continuingedu.signup.service.ProjectRegisterServiceImpl">
+		<property name="projectRegisterDao" ref="ProjectRegisterDAO" />
+	</bean>
+
+	<!-- action -->
+	<bean id="ProjectRegisterAction"
+		class="edu.neu.nxist.continuingedu.signup.action.ProjectRegisterAction">
+		<property name="projectRegisterService" ref="ProjectRegisterService" />
+
+	</bean>
+	<bean id="ProjectRegisterActionForMgr"
+		class="edu.neu.nxist.continuingedu.signup.action.ProjectRegisterActionForMgr">
+		<property name="projectRegisterService" ref="ProjectRegisterService" />
+		<property name="mailService" ref="MailService" />
+	</bean>
+	<bean id="BarcodeAction"
+		class="edu.neu.nxist.continuingedu.signup.action.BarcodeAction" />
+</beans>

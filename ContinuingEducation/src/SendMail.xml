@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<!-- 此处编码格式必须用UTF-8格式,这样和程序中的解码是统一的,不会出现乱码 -->
+<mail> 
+  <logmessage> 
+    <!--报文的二级节点,为了使传入的type值对大小写不限制,故此处必须用小写 -->  
+    <host>smtp.qq.com</host>  
+    <!-- 邮件服务器域名或IP,必填项 -->  
+    <from>759495386@qq.com</from>  
+    <!-- 发件人 ,必填项 -->  
+    <to></to>  
+    <!-- 收件人,多个收件人之间用英文状态下的逗号隔开,必填项 -->  
+    <cc>759495386@qq.com</cc>  
+    <!-- 抄送,多个抄送人之间用英文状态下的逗号隔开-->  
+    <title>项目报名预约码确认验证</title>  
+    <!-- 邮件主题-->  
+    <username>759495386@qq.com</username>  
+    <!-- 发件人邮箱的用户名,即email的全地址,必填项 -->  
+    <password>3A3232393B32393B6A</password>  
+    <!-- 发件人邮箱的密码,像QQ邮箱如果设置了独立密码应输入独立密码,必填项,为了安全起见填写密码之前最好用Encrypt类的DoEncrypt方法加密 --> 
+  </logmessage>  
+  <checkmessage> 
+    <host/>  
+    <from/>  
+    <to/>  
+    <cc/>  
+    <title/>  
+    <username/>  
+    <password/> 
+  </checkmessage>  
+  <ordermessage> 
+    <host>smtp.qq.com</host>  
+    <from>759495386@qq.com</from>  
+    <to>759495386@qq.com,1258615936@qq.com</to>  
+    <cc>759495386@qq.com</cc>  
+    <title>项目报名预约码确认验证</title>  
+    <username>759495386@qq.com</username>  
+    <password>3A3232393B32393B6A</password> 
+  </ordermessage> 
+</mail>

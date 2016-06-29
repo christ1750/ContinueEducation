@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="register" namespace="/"
+		extends="struts-default,json-default">
+
+		<action name="loadCertificate" class="loadCertificateAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadDegree" class="loadDegreeAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadNation" class="loadNationAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadParty" class="loadPartyAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadSchool" class="loadSchoolAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadState" class="loadStateAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="loadMaritalStatus" class="loadMaritalStatusAction">
+			<result type="json"></result>
+		</action>
+		<!-- Action -->
+
+		<!-- UserInfoAction -->
+		<action name="userInfoAction" class="userInfoAction">
+			<result name="saveUserInfo">/zcsuccess.jsp</result>
+			<result name="updateUserInfo">/xgsuccess.jsp</result>
+			<result type="json"></result>
+		</action>
+		
+		
+
+		<action name="loginAction" class="loginAction">
+			<result name="login" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="mgrLogin">
+				/admin-mainmanager.jsp
+			</result>
+		</action>
+		<action name="logout" class="loginAction" method="logout">
+			<result name="logout">/index.jsp</result>
+		</action>
+		
+		<action name="userManageAction" class="userManageAction">
+			
+
+			
+			<result name="beforeAdduser">/admin-adduser.jsp</result>
+			<result name="saveUserInfo">/admin-addsuccess.jsp</result>
+			<result name="updateUserInfo">/admin-changesuccess.jsp</result>
+				<result name="showoneuser">/admin-updateuser.jsp</result>
+				
+			<result name="deletestu" type="redirect">
+				/userManageAction!liststuForPage
+    	</result>
+			<result name="deletemanager" type="redirect">
+				/userManageAction!listmanagerForPage
+    	</result>
+    	    <result name="deleteteacher" type="redirect">
+				/userManageAction!listteacherForPage
+    	</result>
+			<result name="deleteteacherTemp" type="redirect">
+				/userManageAction!listteacherTempForPage
+    	</result>
+    		<result name="recover" type="redirect">
+				/userManageAction!listdeletedForPage
+    	</result>
+    	
+    	
+    		<result name="liststuForPage">
+				/admin-liststu.jsp
+    	</result>
+			<result name="listmanagerForPage">
+				/admin-listmanager.jsp
+    	</result>
+    	    <result name="listteacherForPage" >
+				/admin-listteacher.jsp
+    	</result>
+			<result name="listteacherTempForPage">
+				/admin-listteacherTemp.jsp
+    	</result>
+    	    <result name="listdeletedForPage">
+				/admin-listdeleted.jsp
+    	</result>
+    	
+    	
+    	
+			<result type="json"></result>
+		</action>
+		
+	</package>
+</struts>

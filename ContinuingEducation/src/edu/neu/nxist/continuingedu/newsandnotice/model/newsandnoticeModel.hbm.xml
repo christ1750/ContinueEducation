@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.newsandnotice.model">
+
+	<class name="NewsAndNotice" table="EDU_NEWSANDNOTICE">
+		<id name="Id">
+			<column name="ID" />
+			<generator class="uuid" />
+		</id>
+		<property name="title">
+			<column name="title" />
+		</property>
+		<property name="content">
+			<column name="content" />
+		</property>
+		<property name="time">
+			<column name="time" />
+		</property>
+		<many-to-one name="category"
+			class="edu.neu.nxist.continuingedu.newsandnotice.model.NewsAndNoticeCategory"
+			lazy="false">
+			<column name="categoryID" />
+		</many-to-one>
+		<property name="author">
+			<column name="author" />
+		</property>
+	</class>
+
+	<class name="NewsAndNoticeCategory" table="EDU_NEWSANDNOTICECATEGORY">
+	<id name="categoryId" column="categoryID" type="java.lang.Integer">
+		<generator class="increment" />
+	</id>
+
+	<property name="categoryName" column="categoryName"></property>
+
+</class>
+
+</hibernate-mapping>

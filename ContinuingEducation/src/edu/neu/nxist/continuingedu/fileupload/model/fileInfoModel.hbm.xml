@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.fileupload.model">
+	<class name="FileInfo" table="EDU_FILEINFO">
+		<id name="fileId" column="fileId">
+			<generator class="uuid" />
+		</id>
+		<property name="fileName" column="fileName" />
+		<property name="filePath" column="filePath" />
+		<property name="fileSize" column="fileSize" />
+		<property name="time" column="time" type="java.util.Date" />
+		<many-to-one name="fileCategory" class="FileCategory"
+			lazy="false">
+			<column name="categoryId" />
+		</many-to-one>
+	</class>
+	<class name="FileCategory" table="EDU_FILECATEGORY">
+		<id name="categoryId" column="categoryId" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="categoryName" column="categoryName" />
+	</class>
+</hibernate-mapping>

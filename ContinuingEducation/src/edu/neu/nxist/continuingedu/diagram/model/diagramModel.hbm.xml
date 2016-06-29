@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.neu.nxist.continuingedu.diagram.model">
+
+	<class name="Diagram" table="EDU_DIAGRAM">
+		<id name="id" column="id">
+		
+		</id>
+		
+		<property name="title" column="title"></property>
+		<property name="time" column="time"></property>
+	
+		<many-to-one name="news"
+			class="edu.neu.nxist.continuingedu.newsandnotice.model.NewsAndNotice" lazy="false">
+			<column name="newsID" />
+			</many-to-one>
+		<many-to-one name="userInfo"
+			class="edu.neu.nxist.continuingedu.register.model.UserInfo" lazy="false">
+			<column name="author" />
+		</many-to-one>
+		
+	</class>
+
+	
+</hibernate-mapping>
